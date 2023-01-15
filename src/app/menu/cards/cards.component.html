@@ -1,0 +1,21 @@
+<div class="grid mt-16 gap-4 gap-y-20 grid-cols-2 grid-rows-2">
+  <div
+    class="border-[#C5C5C5] border-[1px] rounded-2xl"
+    *ngFor="let item of items"
+  >
+    <div class="flex flex-col items-center p-3">
+      <div>
+        <img class="rounded-full h-20 w-20 m-auto" src="{{ item.image }}" />
+        <p class="text-xs font-semibold">{{ item.name }}</p>
+        <p class="text-xs font-semibold">Rp. {{ item.price }}</p>
+      </div>
+      <div class="mt-10 mb-0">
+        <button
+          class="border-[#28A748] border-2 h-5 text-xs text-[#28A748] px-7 rounded-lg"
+        >
+          Tambah
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
