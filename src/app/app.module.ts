@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, LOCALE_ID } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
 import { AppRoutingModule } from './app-routing.module';
@@ -8,7 +8,10 @@ import { WelcomeComponent } from './welcome/welcome.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { CardsComponent } from './menu/cards/cards.component';
 import { CheckoutComponent } from './menu/checkout/checkout.component';
-
+import { AdditionComponent } from './menu/cards/addition/addition.component';
+import localeId from '@angular/common/locales/id';
+import { registerLocaleData } from '@angular/common';
+registerLocaleData(localeId, 'id');
 @NgModule({
   declarations: [
     AppComponent,
@@ -17,6 +20,7 @@ import { CheckoutComponent } from './menu/checkout/checkout.component';
     PageNotFoundComponent,
     CardsComponent,
     CheckoutComponent,
+    AdditionComponent,
   ],
   imports: [
     BrowserModule,
@@ -28,7 +32,7 @@ import { CheckoutComponent } from './menu/checkout/checkout.component';
       { path: '**', component: PageNotFoundComponent },
     ]),
   ],
-  providers: [],
+  providers: [{ provide: LOCALE_ID, useValue: 'id-ID' }],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

@@ -5,16 +5,37 @@
   >
     <div class="flex flex-col items-center p-3">
       <div>
-        <img class="rounded-full h-20 w-20 m-auto" src="{{ item.image }}" />
-        <p class="text-xs font-semibold">{{ item.name }}</p>
-        <p class="text-xs font-semibold">Rp. {{ item.price }}</p>
+        <img
+          class="rounded-full h-20 w-20 m-auto mb-2"
+          src="{{ item.image }}"
+        />
+        <p class="text-xs font-bold">{{ item.name }}</p>
+        <p class="text-xs font-semibold">
+          {{ item.price | currency : "IDR" : "symbol" : "3.0" }}
+        </p>
       </div>
       <div class="mt-10 mb-0">
         <button
+          *ngIf="count <= 0"
           class="border-[#28A748] border-2 h-5 text-xs text-[#28A748] px-7 rounded-lg"
+          (click)="count = count + 1"
         >
-          Tambah
+          Tambah {{ count }}
         </button>
+        <div class="flex justify-between items-center gap-4" *ngIf="count > 0">
+          <button class="text-xs">Catatan</button>
+          <div class="flex items-center justify-center gap-2">
+            <button (click)="count = count - 1" class="">
+              <img src="/assets/img/min.svg" />
+            </button>
+            <div class="text-xs">
+              {{ count }}
+            </div>
+            <button (click)="count = count + 1" class="">
+              <img src="/assets/img/plus.svg" />
+            </button>
+          </div>
+        </div>
       </div>
     </div>
   </div>

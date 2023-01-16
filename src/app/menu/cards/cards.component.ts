@@ -42,4 +42,6 @@ export class CardsComponent {
       image: '/assets/img/cook.jpg',
     },
   ];
+
+  count: number = 1;
 }
