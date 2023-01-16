@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { aid } from './id';
 import { item } from './item';
+import { order } from '../order';
 
 @Component({
   selector: 'app-cards',
@@ -42,6 +43,12 @@ export class CardsComponent {
       image: '/assets/img/cook.jpg',
     },
   ];
+
+  @Output() newItemEvent = new EventEmitter<string>();
+
+  addOut() {
+    this.newItemEvent.emit('Hello this is Output');
+  }
 
   count: number = 1;
 }

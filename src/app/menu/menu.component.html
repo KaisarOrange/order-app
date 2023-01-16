@@ -1,8 +1,9 @@
 <div class="xl:w-2/5 xl:m-auto ml-9 mr-9 mt-5 h-screen">
   <h1 class="text-xl font-semibold">Menu</h1>
   <h2>Choose your delicious meal</h2>
+  <h1>{{ hello }}</h1>
   <div class="flex flex-col">
-    <app-cards></app-cards>
+    <app-cards (newItemEvent)="hello = $event"></app-cards>
     <app-checkout></app-checkout>
   </div>
 </div>

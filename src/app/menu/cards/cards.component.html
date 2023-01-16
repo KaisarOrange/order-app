@@ -20,7 +20,7 @@
           class="border-[#28A748] border-2 h-5 text-xs text-[#28A748] px-7 rounded-lg"
           (click)="count = count + 1"
         >
-          Tambah {{ count }}
+          Tambah
         </button>
         <div class="flex justify-between items-center gap-4" *ngIf="count > 0">
           <button class="text-xs">Catatan</button>
@@ -36,6 +36,7 @@
             </button>
           </div>
         </div>
+        <button (click)="addOut()">hello</button>
       </div>
     </div>
   </div>
