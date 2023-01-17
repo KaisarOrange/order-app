@@ -44,9 +44,9 @@ export class CardsComponent {
     },
   ];
 
-  order: order[] = [];
-
   @Output() newItemEvent = new EventEmitter<any>();
+
+  @Input() order: Array<any> = [];
 
   pushOrder(price: number, id: number, name: string, amount?: number) {
     const check = this.order.some((e) => e.id === id);
@@ -82,6 +82,11 @@ export class CardsComponent {
     this.addOut();
     console.log(this.order);
   }
+
+  renderAmount = (id: number) => {
+    const find = this.order.findIndex((e) => e.id === id);
+    return find;
+  };
 
   addOut() {
     this.newItemEvent.emit(this.order);

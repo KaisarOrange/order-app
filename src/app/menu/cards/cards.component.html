@@ -16,15 +16,15 @@
       </div>
       <div class="mt-10 mb-0">
         <button
-          *ngIf="item.amount === 0"
+          *ngIf="item.amount === 0 && order[renderAmount(item.id)]?.amount < 1"
           class="border-[#28A748] border-2 h-5 text-xs text-[#28A748] px-7 rounded-lg"
           (click)="pushOrder(item.price, item.id, item.name)"
         >
           Tambah
         </button>
         <div
-          *ngIf="item.amount > 0"
-          class="flex justify-between items-center gap-4"
+          *ngIf="order[renderAmount(item.id)]?.amount > 0"
+          class="flex justify-between items-center gap-1"
         >
           <button
             class="text-[10px] border-black border-[1px] rounded-full px-2 shadow-lg"
@@ -36,7 +36,7 @@
               <img src="/assets/img/min.svg" />
             </button>
             <div class="text-xs w-2 flex justify-center">
-              {{ item.amount }}
+              {{ order[renderAmount(item.id)]?.amount }}
             </div>
             <button
               (click)="pushOrder(item.price, item.id, item.name)"

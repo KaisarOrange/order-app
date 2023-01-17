@@ -9,7 +9,7 @@ import { order } from './order';
 export class MenuComponent {
   menu: boolean = true;
   current: string = 'hello';
-  order: Array<string> = [];
+  order: Array<any> = [];
 
   addHello(hello: Array<string>) {
     this.order = hello;
