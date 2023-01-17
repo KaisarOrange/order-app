@@ -8,7 +8,6 @@ import { WelcomeComponent } from './welcome/welcome.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { CardsComponent } from './menu/cards/cards.component';
 import { CheckoutComponent } from './menu/checkout/checkout.component';
-import { AdditionComponent } from './menu/cards/addition/addition.component';
 import localeId from '@angular/common/locales/id';
 import { registerLocaleData } from '@angular/common';
 registerLocaleData(localeId, 'id');
@@ -20,7 +19,6 @@ registerLocaleData(localeId, 'id');
     PageNotFoundComponent,
     CardsComponent,
     CheckoutComponent,
-    AdditionComponent,
   ],
   imports: [
     BrowserModule,

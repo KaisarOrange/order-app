@@ -7,10 +7,14 @@ import { order } from './order';
   styleUrls: ['./menu.component.scss'],
 })
 export class MenuComponent {
+  menu: boolean = true;
   current: string = 'hello';
-  hello = '';
+  order: Array<string> = [];
 
-  addHello(hello: string) {
-    this.hello = hello;
+  addHello(hello: Array<string>) {
+    this.order = hello;
+  }
+  switchView(menu: boolean) {
+    this.menu = menu;
   }
 }

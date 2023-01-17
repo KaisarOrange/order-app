@@ -1,9 +1,12 @@
-<div class="xl:w-2/5 xl:m-auto ml-9 mr-9 mt-5 h-screen">
+<div *ngIf="menu" class="xl:w-2/5 xl:m-auto ml-9 mr-9 mt-5 h-screen">
   <h1 class="text-xl font-semibold">Menu</h1>
   <h2>Choose your delicious meal</h2>
-  <h1>{{ hello }}</h1>
   <div class="flex flex-col">
-    <app-cards (newItemEvent)="hello = $event"></app-cards>
-    <app-checkout></app-checkout>
+    <app-cards (newItemEvent)="order = $event"></app-cards>
+    <app-checkout
+      (switchView)="switchView($event)"
+      [order]="order"
+    ></app-checkout>
   </div>
 </div>
+<div *ngIf="menu === false" (click)="menu = true">Hello</div>

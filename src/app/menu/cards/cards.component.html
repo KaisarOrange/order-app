@@ -1,12 +1,12 @@
-<div class="grid mt-10 gap-4 gap-y-20 grid-cols-2 grid-rows-2">
+<div class="grid mt-10 gap-4 gap-y-10 grid-cols-2 grid-rows-2">
   <div
     class="border-[#C5C5C5] border-[1px] rounded-2xl"
-    *ngFor="let item of items"
+    *ngFor="let item of items; index as i"
   >
     <div class="flex flex-col items-center p-3">
       <div>
         <img
-          class="rounded-full h-20 w-20 m-auto mb-2"
+          class="rounded-full h-28 w-28 m-auto mb-2"
           src="{{ item.image }}"
         />
         <p class="text-xs font-bold">{{ item.name }}</p>
@@ -16,27 +16,36 @@
       </div>
       <div class="mt-10 mb-0">
         <button
-          *ngIf="count <= 0"
+          *ngIf="item.amount === 0"
           class="border-[#28A748] border-2 h-5 text-xs text-[#28A748] px-7 rounded-lg"
-          (click)="count = count + 1"
+          (click)="pushOrder(item.price, item.id, item.name)"
         >
           Tambah
         </button>
-        <div class="flex justify-between items-center gap-4" *ngIf="count > 0">
-          <button class="text-xs">Catatan</button>
-          <div class="flex items-center justify-center gap-2">
-            <button (click)="count = count - 1" class="">
+        <div
+          *ngIf="item.amount > 0"
+          class="flex justify-between items-center gap-4"
+        >
+          <button
+            class="text-[10px] border-black border-[1px] rounded-full px-2 shadow-lg"
+          >
+            Catatan
+          </button>
+          <div class="flex items-center justify-center gap-2 flex-shrink-0">
+            <button (click)="reduceOrder(item.id)" class="">
               <img src="/assets/img/min.svg" />
             </button>
-            <div class="text-xs">
-              {{ count }}
+            <div class="text-xs w-2 flex justify-center">
+              {{ item.amount }}
             </div>
-            <button (click)="count = count + 1" class="">
+            <button
+              (click)="pushOrder(item.price, item.id, item.name)"
+              class=""
+            >
               <img src="/assets/img/plus.svg" />
             </button>
           </div>
         </div>
-        <button (click)="addOut()">hello</button>
       </div>
     </div>
   </div>
