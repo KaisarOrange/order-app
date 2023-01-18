@@ -9,4 +9,10 @@
     ></app-checkout>
   </div>
 </div>
-<div *ngIf="menu === false" (click)="menu = true">Hello</div>
+<div class="mt-5 h-screen" *ngIf="menu === false">
+  <app-payment
+    [order]="order"
+    [menu]="menu"
+    (switchView)="switchView($event)"
+  ></app-payment>
+</div>

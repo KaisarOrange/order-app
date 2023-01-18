@@ -10,6 +10,8 @@ import { CardsComponent } from './menu/cards/cards.component';
 import { CheckoutComponent } from './menu/checkout/checkout.component';
 import localeId from '@angular/common/locales/id';
 import { registerLocaleData } from '@angular/common';
+import { PaymentComponent } from './menu/payment/payment.component';
+import { ListComponent } from './menu/payment/list/list.component';
 registerLocaleData(localeId, 'id');
 @NgModule({
   declarations: [
@@ -19,6 +21,8 @@ registerLocaleData(localeId, 'id');
     PageNotFoundComponent,
     CardsComponent,
     CheckoutComponent,
+    PaymentComponent,
+    ListComponent,
   ],
   imports: [
     BrowserModule,

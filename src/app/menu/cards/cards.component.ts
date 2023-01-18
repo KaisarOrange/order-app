@@ -1,6 +1,6 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { aid } from './id';
-import { item } from './item';
+import items from '../item';
 import { order } from '../order';
 
 @Component({
@@ -9,46 +9,19 @@ import { order } from '../order';
   styleUrls: ['./cards.component.scss'],
 })
 export class CardsComponent {
-  items: item[] = [
-    {
-      id: 1,
-      name: 'Carbonara',
-      price: 25000,
-      resep: 'Keju enak dari susu',
-      amount: 0,
-      image: '/assets/img/carbo.png',
-    },
-    {
-      id: 2,
-      name: 'Chicken Mushroom',
-      price: 20000,
-      resep: 'Nasi chicken mushroom dari jamur asli',
-      amount: 0,
-      image: '/assets/img/chicken.png',
-    },
-    {
-      id: 3,
-      name: 'Yoghurt',
-      price: 8000,
-      resep: 'Yoghurt sehat',
-      amount: 0,
-      image: '/assets/img/yog.png',
-    },
-    {
-      id: 4,
-      name: 'Cookies',
-      price: 10000,
-      resep: 'Cookies coklat',
-      amount: 0,
-      image: '/assets/img/cook.jpg',
-    },
-  ];
+  items = items;
 
   @Output() newItemEvent = new EventEmitter<any>();
 
   @Input() order: Array<any> = [];
 
-  pushOrder(price: number, id: number, name: string, amount?: number) {
+  pushOrder(
+    price: number,
+    id: number,
+    name: string,
+    image: string,
+    amount?: number
+  ) {
     const check = this.order.some((e) => e.id === id);
     const find = this.order.findIndex((e) => e.id === id);
     const findItem = this.items.findIndex((e) => e.id === id);
@@ -59,6 +32,7 @@ export class CardsComponent {
         id: id,
         name: name,
         amount: 1,
+        image: image,
       });
 
       this.items[findItem].amount = this.items[findItem].amount + 1;

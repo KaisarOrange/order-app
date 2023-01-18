@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { order } from './order';
 
 @Component({
@@ -7,7 +7,7 @@ import { order } from './order';
   styleUrls: ['./menu.component.scss'],
 })
 export class MenuComponent {
-  menu: boolean = true;
+  menu: boolean = false;
   current: string = 'hello';
   order: Array<any> = [];
 
