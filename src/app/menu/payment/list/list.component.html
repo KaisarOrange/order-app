@@ -1,5 +1,55 @@
-<div class="mx-8">
-  <div *ngFor="let item of order; index as i">
-    <img class="w-20 h-20 rounded-2xl" src="{{ item.image }}" alt="" />
+<div class="bg-[#F5F5F5] py-2 px-8 mt-8">
+  <div
+    class="flex gap-4 mt-2 mb-3 justify-between items-end"
+    *ngFor="let item of order; index as i"
+  >
+    <div class="flex gap-4">
+      <img class="w-20 h-20 rounded-2xl" src="{{ item.image }}" alt="" />
+      <div class="flex flex-col gap-7">
+        <div class="flex justify-between">
+          <div>
+            <h1 class="font-semibold text-sm">{{ item.name }}</h1>
+            <p class="text-xs">
+              {{ item.price | currency : "IDR" : "symbol" : "3.0" }}
+            </p>
+          </div>
+        </div>
+
+        <button
+          class="w-14 text-[10px] border-black border-[1px] rounded-full px-2 shadow-lg"
+        >
+          Catatan
+        </button>
+      </div>
+    </div>
+
+    <div class="flex flex-col gap-14 items-end">
+      <div>
+        <img src="/assets/img/delete.svg" alt="" />
+      </div>
+      <div class="flex items-center justify-center gap-2 flex-shrink-0">
+        <button class="">
+          <img src="/assets/img/min.svg" />
+        </button>
+        <div class="text-xs w-2 flex justify-center">0</div>
+        <button class="">
+          <img src="/assets/img/plus.svg" />
+        </button>
+      </div>
+    </div>
+  </div>
+  <div class="absolute left-0 h-[1px] w-screen bg-[#BCBCBC]"></div>
+  <div class="flex items-center justify-between">
+    <div>
+      <h1 class="font-semibold text-sm">Ada lagi pesanannya?</h1>
+      <p class="text-xs">Masih bisa nambah menu lain, ya</p>
+    </div>
+    <div>
+      <button
+        class="border-[#28A748] border-2 h-5 text-xs text-[#28A748] px-7 rounded-lg"
+      >
+        Tambah
+      </button>
+    </div>
   </div>
 </div>

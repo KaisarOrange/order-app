@@ -11,7 +11,7 @@
       <img class="w-9" src="/assets/img/clock.svg" alt="" />
       <div class="w-44">
         <h2 class="font-semibold text-sm">Pesan antar</h2>
-        <p class="text-xs">
+        <p class="text-xs font-medium">
           Sistem Pre Order hingga hari jumat dan diantar hari sabtu
         </p>
       </div>
@@ -20,7 +20,7 @@
       <img class="w-9" src="/assets/img/location.svg" alt="" />
       <div class="w-44">
         <h2 class="font-semibold text-sm">Alamat</h2>
-        <p class="text-xs">Khusus daerah Malang</p>
+        <p class="text-xs font-medium">Khusus daerah Malang</p>
       </div>
     </div>
   </div>
@@ -29,4 +29,13 @@
 
   <!-- list -->
   <app-list [order]="order"></app-list>
+
+  <!-- pesan -->
+  <div class="flex justify-center items-center mt-8">
+    <button
+      class="bg-[#E28F42] py-2 px-3 w-72 rounded-3xl text-lg text-white font-semibold border-white border-[1px] drop-shadow-[0_4px_4px_rgba(0,0,0,0.3)]"
+    >
+      Pesan
+    </button>
+  </div>
 </div>
