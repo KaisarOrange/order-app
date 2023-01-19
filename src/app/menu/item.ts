@@ -3,7 +3,7 @@ interface item {
   name: string;
   price: number;
   resep: string;
-  amount: number;
+
   image: string;
 }
 
@@ -13,7 +13,7 @@ const items: item[] = [
     name: 'Carbonara',
     price: 25000,
     resep: 'Keju enak dari susu',
-    amount: 0,
+
     image: '/assets/img/carbo.png',
   },
   {
@@ -21,7 +21,7 @@ const items: item[] = [
     name: 'Chicken Mushroom',
     price: 20000,
     resep: 'Nasi chicken mushroom dari jamur asli',
-    amount: 0,
+
     image: '/assets/img/chicken.png',
   },
   {
@@ -29,7 +29,7 @@ const items: item[] = [
     name: 'Yoghurt',
     price: 8000,
     resep: 'Yoghurt sehat',
-    amount: 0,
+
     image: '/assets/img/yog.png',
   },
   {
@@ -37,7 +37,7 @@ const items: item[] = [
     name: 'Cookies',
     price: 10000,
     resep: 'Cookies coklat',
-    amount: 0,
+
     image: '/assets/img/cook.jpg',
   },
 ];

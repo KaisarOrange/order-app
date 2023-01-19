@@ -24,15 +24,12 @@
     </div>
 
     <div class="flex flex-col gap-14 items-end">
-      <div>
-        <img src="/assets/img/delete.svg" alt="" />
-      </div>
       <div class="flex items-center justify-center gap-2 flex-shrink-0">
-        <button class="">
+        <button class="" (click)="reduceOrder(item.id)">
           <img src="/assets/img/min.svg" />
         </button>
-        <div class="text-xs w-2 flex justify-center">0</div>
-        <button class="">
+        <div class="text-xs w-2 flex justify-center">{{ item.amount }}</div>
+        <button class="" (click)="addOrder(item.id)">
           <img src="/assets/img/plus.svg" />
         </button>
       </div>
@@ -46,9 +43,10 @@
     </div>
     <div>
       <button
+        (click)="onClick()"
         class="border-[#28A748] border-2 h-5 text-xs text-[#28A748] px-7 rounded-lg"
       >
-        Tambah
+        Tambaha
       </button>
     </div>
   </div>

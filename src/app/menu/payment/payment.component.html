@@ -28,7 +28,11 @@
   <!-- Input info -->
 
   <!-- list -->
-  <app-list [order]="order"></app-list>
+  <app-list
+    (handleClick)="childEvent($event)"
+    [menu]="menu"
+    [order]="order"
+  ></app-list>
 
   <!-- pesan -->
   <div class="flex justify-center items-center mt-8">

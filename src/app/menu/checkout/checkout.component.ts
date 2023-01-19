@@ -29,12 +29,5 @@ export class CheckoutComponent implements OnChanges {
     return total;
   };
 
-  updateItem = () => {
-    if (this.order.length > 0) {
-      console.log('hello' + this.order);
-    }
-  };
-  ngOnChanges() {
-    this.updateItem();
-  }
+  ngOnChanges() {}
 }

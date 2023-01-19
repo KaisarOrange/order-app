@@ -16,7 +16,7 @@
       </div>
       <div class="mt-10 mb-0">
         <button
-          *ngIf="item.amount < 1 && order[renderAmount(item.id)]?.amount < 1"
+          *ngIf="order[renderAmount(item.id)]?.amount < 1"
           class="border-[#28A748] border-2 h-5 text-xs text-[#28A748] px-7 rounded-lg"
           (click)="pushOrder(item.price, item.id, item.name, item.image)"
         >

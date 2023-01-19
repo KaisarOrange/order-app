@@ -17,4 +17,7 @@ export class MenuComponent {
   switchView(menu: boolean) {
     this.menu = menu;
   }
+  grandmaHandleClick(event: any) {
+    console.log('grandma knows you clicked hehe');
+  }
 }

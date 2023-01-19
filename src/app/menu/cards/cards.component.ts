@@ -34,11 +34,8 @@ export class CardsComponent {
         amount: 1,
         image: image,
       });
-
-      this.items[findItem].amount = this.items[findItem].amount + 1;
     } else {
       this.order[find].amount = this.order[find].amount + 1;
-      this.items[findItem].amount = this.items[findItem].amount + 1;
     }
     this.addOut();
   }
@@ -47,12 +44,10 @@ export class CardsComponent {
     const find = this.order.findIndex((e) => e.id === id);
     const findItem = this.items.findIndex((e) => e.id === id);
 
-    this.items[findItem].amount = this.items[findItem].amount - 1;
     this.order[find].amount = this.order[find].amount - 1;
 
-    if (this.order[find].amount === 0) {
-      this.order = this.order.filter((e) => e.amount > 0);
-    }
+    this.order = this.order.filter((e) => e.amount > 0);
+
     this.addOut();
     console.log(this.order);
   }
