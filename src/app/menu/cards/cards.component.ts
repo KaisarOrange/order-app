@@ -63,5 +63,4 @@ export class CardsComponent {
   log() {
     console.log(this.order);
   }
-  count: number = 0;
 }

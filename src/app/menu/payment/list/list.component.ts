@@ -1,17 +1,18 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import items from '../../item';
 @Component({
   selector: 'app-list',
   templateUrl: './list.component.html',
   styleUrls: ['./list.component.scss'],
 })
-export class ListComponent {
+export class ListComponent implements OnInit {
   @Input() order: Array<any> = [];
   @Input() menu: boolean = false;
 
   @Output() handleClick = new EventEmitter();
+  @Output() setSwitchView = new EventEmitter();
   onClick() {
-    this.handleClick.emit('clicked a button');
+    this.setSwitchView.emit('clicked a button');
   }
 
   addOrder(id: number) {
@@ -27,5 +28,9 @@ export class ListComponent {
   setSwitch() {
     this.menu = true;
     console.log(this.menu);
+  }
+
+  ngOnInit(): void {
+    this.order = this.order.filter((e) => e.amount > 0);
   }
 }

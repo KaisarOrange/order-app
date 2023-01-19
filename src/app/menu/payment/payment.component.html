@@ -30,6 +30,7 @@
   <!-- list -->
   <app-list
     (handleClick)="childEvent($event)"
+    (setSwitchView)="setSwitch()"
     [menu]="menu"
     [order]="order"
   ></app-list>
