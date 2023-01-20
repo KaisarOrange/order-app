@@ -9,6 +9,6 @@
     ></app-checkout>
   </div>
 </div>
-<div class="mt-5 h-screen" *ngIf="menu === false">
+<div class="xl:w-2/5 xl:m-auto mt-5 h-screen" *ngIf="menu === false">
   <app-payment [order]="order" (switchView)="switchView($event)"></app-payment>
 </div>
