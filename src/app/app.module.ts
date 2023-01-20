@@ -12,6 +12,10 @@ import localeId from '@angular/common/locales/id';
 import { registerLocaleData } from '@angular/common';
 import { PaymentComponent } from './menu/payment/payment.component';
 import { ListComponent } from './menu/payment/list/list.component';
+import { InputComponent } from './menu/payment/input/input.component';
+import { HeadComponent } from './menu/payment/head/head.component';
+import { RingkasanComponent } from './menu/payment/ringkasan/ringkasan.component';
+import { AutosizeModule } from 'ngx-autosize';
 registerLocaleData(localeId, 'id');
 @NgModule({
   declarations: [
@@ -23,10 +27,14 @@ registerLocaleData(localeId, 'id');
     CheckoutComponent,
     PaymentComponent,
     ListComponent,
+    InputComponent,
+    HeadComponent,
+    RingkasanComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    AutosizeModule,
     RouterModule.forRoot([
       { path: 'menu', component: MenuComponent },
       { path: 'order', component: WelcomeComponent },

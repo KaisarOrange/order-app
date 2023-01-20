@@ -1,0 +1,41 @@
+<div class="m-10 bg-[#F5F5F5] rounded-xl">
+  <div class="p-5">
+    <h1 class="font-semibold text-sm">Ringkasan pembayaran</h1>
+    <div class="p-2">
+      <div class="flex justify-between mt-2 text-xs">
+        <p>Harga</p>
+        <p>
+          {{
+            totalAddition() === 0
+              ? "Rp0"
+              : (totalAddition() | currency : "IDR" : "symbol" : "3.0")
+          }}
+        </p>
+      </div>
+      <div class="flex justify-between mt-2 text-xs">
+        <p>Ongkir</p>
+        <p>Gratis</p>
+      </div>
+      <div class="flex justify-between mt-2 text-xs">
+        <p>Biaya layanan & lainnya.</p>
+        <p>0</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="w-full h-[1px] bg-black bg-opacity-80"></div>
+  <div class="p-7">
+    <div class="flex justify-between mt-2 text-xs">
+      <p class="text-xs">Total Pembayaran</p>
+      <p>
+        {{
+          totalAddition() === 0
+            ? "Rp0"
+            : (totalAddition() | currency : "IDR" : "symbol" : "3.0")
+        }}
+      </p>
+    </div>
+  </div>
+  <div class="w-full h-[1px] bg-black bg-opacity-80"></div>
+  <p class="text-xs px-7 pb-7 pt-2">Mohon diperiksa kembali*</p>
+</div>

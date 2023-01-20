@@ -7,7 +7,7 @@ import { order } from './order';
   styleUrls: ['./menu.component.scss'],
 })
 export class MenuComponent {
-  menu: boolean = false;
+  menu: boolean = true;
   current: string = 'hello';
   order: Array<any> = [];
 
@@ -16,8 +16,5 @@ export class MenuComponent {
   }
   switchView(menu: boolean) {
     this.menu = menu;
-  }
-  grandmaHandleClick(event: any) {
-    console.log('grandma knows you clicked hehe');
   }
 }

@@ -1,44 +1,17 @@
-<div>
+<div class="">
   <!-- Header -->
-  <div class="flex items-center justify-start gap-2 ml-6">
-    <img (click)="setSwitch()" src="/assets/img/arrow.svg" alt="" />
-    <img class="h-10" src="/assets/img/pastaboys.png" alt="" />
-  </div>
-  <div class="w-full h-[1px] bg-[#BCBCBC]"></div>
-  <!-- faq -->
-  <div class="flex mt-5 gap-2 ml-4 justify-center">
-    <div class="flex items-start gap-2">
-      <img class="w-9" src="/assets/img/clock.svg" alt="" />
-      <div class="w-44">
-        <h2 class="font-semibold text-sm">Pesan antar</h2>
-        <p class="text-xs font-medium">
-          Sistem Pre Order hingga hari jumat dan diantar hari sabtu
-        </p>
-      </div>
-    </div>
-    <div class="flex items-start gap-2">
-      <img class="w-9" src="/assets/img/location.svg" alt="" />
-      <div class="w-44">
-        <h2 class="font-semibold text-sm">Alamat</h2>
-        <p class="text-xs font-medium">Khusus daerah Malang</p>
-      </div>
-    </div>
-  </div>
 
+  <app-head (setSwitchView)="setSwitch()"></app-head>
   <!-- Input info -->
-
+  <app-input></app-input>
   <!-- list -->
-  <app-list
-    (handleClick)="childEvent($event)"
-    (setSwitchView)="setSwitch()"
-    [menu]="menu"
-    [order]="order"
-  ></app-list>
+  <app-list (setSwitchView)="setSwitch()" [order]="order"></app-list>
 
+  <app-ringkasan [order]="order"></app-ringkasan>
   <!-- pesan -->
   <div class="flex justify-center items-center mt-8">
     <button
-      class="bg-[#E28F42] py-2 px-3 w-72 rounded-3xl text-lg text-white font-semibold border-white border-[1px] drop-shadow-[0_4px_4px_rgba(0,0,0,0.3)]"
+      class="bg-[#E28F42] mb-2 py-2 px-3 w-72 rounded-3xl text-lg text-white font-semibold border-white border-[1px] drop-shadow-[0_4px_4px_rgba(0,0,0,0.3)]"
     >
       Pesan
     </button>

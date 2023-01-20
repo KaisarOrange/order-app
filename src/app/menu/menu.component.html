@@ -1,4 +1,4 @@
-<div *ngIf="menu" class="xl:w-2/5 xl:m-auto ml-9 mr-9 mt-5 h-screen">
+<div *ngIf="menu" class="xl:w-2/5 xl:m-auto ml-9 mr-9 mt-2 h-screen">
   <h1 class="text-xl font-semibold">Menu</h1>
   <h2>Choose your delicious meal</h2>
   <div class="flex flex-col">
@@ -10,10 +10,5 @@
   </div>
 </div>
 <div class="mt-5 h-screen" *ngIf="menu === false">
-  <app-payment
-    [order]="order"
-    [menu]="menu"
-    (switchView)="switchView($event)"
-    (notifyGrandParent)="grandmaHandleClick($event)"
-  ></app-payment>
+  <app-payment [order]="order" (switchView)="switchView($event)"></app-payment>
 </div>
