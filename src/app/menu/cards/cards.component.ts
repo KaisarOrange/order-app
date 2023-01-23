@@ -1,7 +1,7 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { aid } from './id';
-import items from '../item';
 import { order } from '../order';
+import { ItemService } from '../services/item.service';
 
 @Component({
   selector: 'app-cards',
@@ -9,11 +9,13 @@ import { order } from '../order';
   styleUrls: ['./cards.component.scss'],
 })
 export class CardsComponent {
-  items = items;
+  items = this.itemService.getItems();
 
   @Output() newItemEvent = new EventEmitter<any>();
 
   @Input() order: Array<any> = [];
+
+  constructor(private itemService: ItemService) {}
 
   pushOrder(
     price: number,

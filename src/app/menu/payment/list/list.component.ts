@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import items from '../../item';
+
 @Component({
   selector: 'app-list',
   templateUrl: './list.component.html',
