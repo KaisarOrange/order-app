@@ -12,7 +12,7 @@ export class ItemService {
       price: 25000,
       resep: 'Keju enak dari susu',
 
-      image: '/assets/img/carbo.png',
+      image: 'assets/img/carbo.png',
     },
     {
       id: 2,
@@ -20,7 +20,7 @@ export class ItemService {
       price: 20000,
       resep: 'Nasi chicken mushroom dari jamur asli',
 
-      image: '/assets/img/chicken.png',
+      image: 'assets/img/chicken.png',
     },
     {
       id: 3,
@@ -28,7 +28,7 @@ export class ItemService {
       price: 8000,
       resep: 'Yoghurt sehat',
 
-      image: '/assets/img/yog.png',
+      image: 'assets/img/yog.png',
     },
     {
       id: 4,
@@ -36,7 +36,7 @@ export class ItemService {
       price: 10000,
       resep: 'Cookies coklat',
 
-      image: '/assets/img/cook.jpg',
+      image: 'assets/img/cook.jpg',
     },
   ];
 

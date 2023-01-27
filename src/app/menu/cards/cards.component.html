@@ -33,7 +33,7 @@
           </button>
           <div class="flex items-center justify-center gap-2 flex-shrink-0">
             <button (click)="reduceOrder(item.id)" class="">
-              <img src="/assets/img/min.svg" />
+              <img src="assets/img/min.svg" />
             </button>
             <div class="text-xs w-2 flex justify-center">
               {{ order[renderAmount(item.id)]?.amount }}
@@ -42,7 +42,7 @@
               (click)="pushOrder(item.price, item.id, item.name, item.image)"
               class=""
             >
-              <img src="/assets/img/plus.svg" />
+              <img src="assets/img/plus.svg" />
             </button>
           </div>
         </div>
