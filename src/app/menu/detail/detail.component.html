@@ -1,0 +1,29 @@
+<div>
+  <img src="{{ items[0].image }}" class="rounded-b-lg h-80 w-full" />
+  <div class="flex justify-between p-8">
+    <div>
+      <h1 class="font-medium text-2xl">{{ items[0].name }}</h1>
+      <h2 class="font-bold text-2xl">
+        {{ items[0].price | currency : "IDR" : "symbol" : "3.0" }}
+      </h2>
+    </div>
+    <div class="flex items-center justify-center gap-2 flex-shrink-0">
+      <button class="">
+        <img src="assets/img/min.svg" />
+      </button>
+      <div class="text-xs w-2 flex justify-center">
+        5
+        <!-- {{ order[renderAmount(item.id)]?.amount }} -->
+      </div>
+      <button class="">
+        <img src="assets/img/plus.svg" />
+      </button>
+    </div>
+  </div>
+  <div class="p-8">
+    <h1 class="text-lg font-medium">Resep</h1>
+    <p>{{ items[0].resep }}</p>
+  </div>
+
+  <app-checkout></app-checkout>
+</div>

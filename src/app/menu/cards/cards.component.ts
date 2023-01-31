@@ -1,68 +1,42 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
-import { aid } from './id';
-import { order } from '../order';
+import { Component, OnInit, OnChanges, SimpleChanges } from '@angular/core';
 import { ItemService } from '../services/item.service';
+import { OrderService } from '../services/order.service';
 
 @Component({
   selector: 'app-cards',
   templateUrl: './cards.component.html',
   styleUrls: ['./cards.component.scss'],
 })
-export class CardsComponent {
+export class CardsComponent implements OnInit, OnChanges {
   items = this.itemService.getItems();
 
-  @Output() newItemEvent = new EventEmitter<any>();
+  order: Array<any> = [];
 
-  @Input() order: Array<any> = [];
+  constructor(
+    private itemService: ItemService,
+    private orderItem: OrderService
+  ) {}
 
-  constructor(private itemService: ItemService) {}
-
-  pushOrder(
-    price: number,
-    id: number,
-    name: string,
-    image: string,
-    amount?: number
-  ) {
-    const check = this.order.some((e) => e.id === id);
-    const find = this.order.findIndex((e) => e.id === id);
-    const findItem = this.items.findIndex((e) => e.id === id);
-
-    if (check === false) {
-      this.order.push({
-        price: price,
-        id: id,
-        name: name,
-        amount: 1,
-        image: image,
-      });
-    } else {
-      this.order[find].amount = this.order[find].amount + 1;
-    }
-    this.addOut();
+  pushOrder(price: number, id: number, name: string, image: string) {
+    this.orderItem.pushOrder(price, id, name, image);
+    this.order = this.orderItem.getOrder();
   }
 
   reduceOrder(id: number) {
-    const find = this.order.findIndex((e) => e.id === id);
-    const findItem = this.items.findIndex((e) => e.id === id);
-
-    this.order[find].amount = this.order[find].amount - 1;
-
-    this.order = this.order.filter((e) => e.amount > 0);
-
-    this.addOut();
-    console.log(this.order);
+    this.orderItem.reduceOrder(id);
+    this.order = this.orderItem.getOrder();
   }
 
   renderAmount = (id: number) => {
-    const find = this.order.findIndex((e) => e.id === id);
+    const find = this.orderItem.renderAmount(id);
     return find;
   };
 
-  addOut() {
-    this.newItemEvent.emit(this.order);
+  log(id: number) {
+    console.log(this.renderAmount(id));
   }
-  log() {
-    console.log(this.order);
+  ngOnInit(): void {
+    this.order = this.orderItem.getOrder();
   }
+  ngOnChanges(changes: SimpleChanges): void {}
 }

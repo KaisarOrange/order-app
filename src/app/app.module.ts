@@ -16,6 +16,7 @@ import { InputComponent } from './menu/payment/input/input.component';
 import { HeadComponent } from './menu/payment/head/head.component';
 import { RingkasanComponent } from './menu/payment/ringkasan/ringkasan.component';
 import { AutosizeModule } from 'ngx-autosize';
+import { DetailComponent } from './menu/detail/detail.component';
 registerLocaleData(localeId, 'id');
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ registerLocaleData(localeId, 'id');
     InputComponent,
     HeadComponent,
     RingkasanComponent,
+    DetailComponent,
   ],
   imports: [
     BrowserModule,
@@ -37,6 +39,7 @@ registerLocaleData(localeId, 'id');
     AutosizeModule,
     RouterModule.forRoot([
       { path: 'menu', component: MenuComponent },
+      { path: 'menu/:id', component: DetailComponent },
       { path: 'order', component: WelcomeComponent },
       { path: '', redirectTo: '/order', pathMatch: 'full' },
       { path: '**', component: PageNotFoundComponent },

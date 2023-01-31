@@ -2,13 +2,11 @@
   <h1 class="text-xl font-semibold">Menu</h1>
   <h2>Choose your delicious meal</h2>
   <div class="flex flex-col">
-    <app-cards [order]="order" (newItemEvent)="order = $event"></app-cards>
-    <app-checkout
-      (switchView)="switchView($event)"
-      [order]="order"
-    ></app-checkout>
+    <app-cards></app-cards>
+    <app-checkout (switchView)="switchView($event)"></app-checkout>
   </div>
 </div>
+
 <div class="xl:w-2/5 xl:m-auto mt-5 h-screen" *ngIf="menu === false">
-  <app-payment [order]="order" (switchView)="switchView($event)"></app-payment>
+  <app-payment (switchView)="switchView($event)"></app-payment>
 </div>

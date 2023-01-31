@@ -4,7 +4,10 @@ import {
   Output,
   Input,
   OnChanges,
+  SimpleChange,
+  SimpleChanges,
 } from '@angular/core';
+import { OrderService } from '../services/order.service';
 
 @Component({
   selector: 'app-checkout',
@@ -16,8 +19,10 @@ export class CheckoutComponent implements OnChanges {
   setSwitch() {
     this.switchView.emit(false);
   }
-  @Input() order: Array<any> = [];
 
+  constructor(private orderItem: OrderService) {}
+
+  order: Array<any> = this.orderItem.getOrder();
   cont = 0;
 
   amountTotal = () => {
@@ -29,5 +34,5 @@ export class CheckoutComponent implements OnChanges {
     return total;
   };
 
-  ngOnChanges() {}
+  ngOnChanges(change: SimpleChanges) {}
 }

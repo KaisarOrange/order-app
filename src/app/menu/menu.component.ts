@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { order } from './order';
+import { OrderService } from './services/order.service';
 
 @Component({
   selector: 'app-menu',
@@ -17,4 +18,6 @@ export class MenuComponent {
   switchView(menu: boolean) {
     this.menu = menu;
   }
+
+  constructor(private itemOrder: OrderService) {}
 }
