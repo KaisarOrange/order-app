@@ -7,6 +7,7 @@ import {
   SimpleChange,
   SimpleChanges,
 } from '@angular/core';
+import { Subscription } from 'rxjs';
 import { OrderService } from '../services/order.service';
 
 @Component({
@@ -20,9 +21,14 @@ export class CheckoutComponent implements OnChanges {
     this.switchView.emit(false);
   }
 
-  constructor(private orderItem: OrderService) {}
+  subscription!: Subscription;
+  constructor(private orderItem: OrderService) {
+    this.subscription = orderItem
+      .getSubject()
+      .subscribe((e) => (this.order = e));
+  }
 
-  order: Array<any> = this.orderItem.getOrder();
+  order: Array<any> = [];
   cont = 0;
 
   amountTotal = () => {

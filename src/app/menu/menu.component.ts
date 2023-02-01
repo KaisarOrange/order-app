@@ -1,6 +1,8 @@
 import { Component, Input } from '@angular/core';
+import { Subscription } from 'rxjs';
 import { order } from './order';
 import { OrderService } from './services/order.service';
+import { TestService } from './services/test.service';
 
 @Component({
   selector: 'app-menu',
@@ -12,6 +14,9 @@ export class MenuComponent {
   current: string = 'hello';
   order: Array<any> = [];
 
+  datas: any[] = [];
+  subscription!: Subscription;
+
   addHello(hello: Array<string>) {
     this.order = hello;
   }
@@ -19,5 +24,13 @@ export class MenuComponent {
     this.menu = menu;
   }
 
-  constructor(private itemOrder: OrderService) {}
+  constructor(private itemOrder: OrderService, private test: TestService) {
+    this.subscription = this.test.getData().subscribe((res) => {
+      if (res) {
+        this.datas.push(res);
+      } else {
+        this.datas = [];
+      }
+    });
+  }
 }

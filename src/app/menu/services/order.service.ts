@@ -1,4 +1,5 @@
-import { Injectable } from '@angular/core';
+import { Injectable, OnInit } from '@angular/core';
+import { BehaviorSubject, Observable, Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -6,8 +7,15 @@ import { Injectable } from '@angular/core';
 export class OrderService {
   constructor() {}
   order: Array<any> = [];
+  private subject = new BehaviorSubject<Object>([]);
   item: number = 0;
 
+  sendData(data: any) {
+    this.subject.next(data);
+  }
+  getSubject(): Observable<any> {
+    return this.subject.asObservable();
+  }
   pushOrder(
     price: number,
     id: number,
@@ -29,6 +37,7 @@ export class OrderService {
     } else {
       this.order[find].amount = this.order[find].amount + 1;
     }
+    this.sendData(this.order);
   }
 
   reduceOrder(id: number) {
@@ -38,15 +47,11 @@ export class OrderService {
 
     this.order = this.order.filter((e) => e.amount > 0);
 
-    console.log(this.order);
+    this.sendData(this.order);
   }
 
   renderAmount = (id: number) => {
     const find = this.order.findIndex((e) => e.id === id);
     return find;
   };
-
-  getOrder() {
-    return this.order;
-  }
 }

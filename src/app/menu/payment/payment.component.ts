@@ -1,4 +1,6 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Subscription } from 'rxjs';
+import { OrderService } from '../services/order.service';
 
 @Component({
   selector: 'app-payment',
@@ -6,7 +8,15 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
   styleUrls: ['./payment.component.scss'],
 })
 export class PaymentComponent {
-  @Input() order: Array<any> = [];
+  order: Array<any> = [];
+
+  subscription!: Subscription;
+
+  constructor(private orderItem: OrderService) {
+    this.subscription = orderItem.getSubject().subscribe((res) => {
+      this.order = res;
+    });
+  }
   @Output() switchView = new EventEmitter<boolean>();
   setSwitch() {
     this.switchView.emit(true);

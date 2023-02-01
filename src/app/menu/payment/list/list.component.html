@@ -29,7 +29,10 @@
           <img src="assets/img/min.svg" />
         </button>
         <div class="text-xs w-2 flex justify-center">{{ item.amount }}</div>
-        <button class="" (click)="addOrder(item.id)">
+        <button
+          class=""
+          (click)="addOrder(item.price, item.id, item.name, item.image)"
+        >
           <img src="assets/img/plus.svg" />
         </button>
       </div>
