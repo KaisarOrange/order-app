@@ -4,9 +4,8 @@
     *ngFor="let item of items; index as i"
   >
     <div class="flex flex-col items-center p-3">
-      <div>
+      <div [routerLink]="['/menu', item.id]" class="cursor-pointer">
         <img
-          [routerLink]="['/menu', item.id]"
           class="rounded-full h-28 w-28 m-auto mb-2"
           src="{{ item.image }}"
         />

@@ -9,11 +9,10 @@ import { OrderService } from '../services/order.service';
 })
 export class PaymentComponent {
   order: Array<any> = [];
-
   subscription!: Subscription;
 
   constructor(private orderItem: OrderService) {
-    this.subscription = orderItem.getSubject().subscribe((res) => {
+    this.subscription = this.orderItem.getSubject().subscribe((res) => {
       this.order = res;
     });
   }

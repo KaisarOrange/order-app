@@ -1,21 +1,42 @@
-<div>
-  <img src="{{ items[0].image }}" class="rounded-b-lg h-80 w-full" />
+<div class="xl:w-2/6 m-auto">
+  <div class="relative">
+    <img
+      src="{{ items[0].image }}"
+      class="rounded-b-lg h-80 w-full max-w-full"
+    />
+    <img
+      routerLink="/menu"
+      src="assets/img/back.svg"
+      alt=""
+      class="absolute bottom-2 left-2 bg-white px-2 py-1.5 rounded-full"
+    />
+  </div>
+
   <div class="flex justify-between p-8">
-    <div>
+    <div class="">
       <h1 class="font-medium text-2xl">{{ items[0].name }}</h1>
       <h2 class="font-bold text-2xl">
         {{ items[0].price | currency : "IDR" : "symbol" : "3.0" }}
       </h2>
     </div>
     <div class="flex items-center justify-center gap-2 flex-shrink-0">
-      <button class="">
+      <button class="" (click)="reduceOrder(id)">
         <img src="assets/img/min.svg" />
       </button>
       <div class="text-xs w-2 flex justify-center">
-        5
+        {{
+          order[renderAmount(id)]?.amount < 1
+            ? "0"
+            : order[renderAmount(id)]?.amount
+        }}
         <!-- {{ order[renderAmount(item.id)]?.amount }} -->
       </div>
-      <button class="">
+      <button
+        (click)="
+          pushOrder(items[0].price, items[0].id, items[0].name, items[0].image)
+        "
+        class=""
+      >
         <img src="assets/img/plus.svg" />
       </button>
     </div>
