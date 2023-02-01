@@ -16,11 +16,6 @@ import { OrderService } from '../services/order.service';
   styleUrls: ['./checkout.component.scss'],
 })
 export class CheckoutComponent implements OnChanges {
-  @Output() switchView = new EventEmitter<boolean>();
-  setSwitch() {
-    this.switchView.emit(false);
-  }
-
   subscription!: Subscription;
   constructor(private orderItem: OrderService) {
     this.subscription = orderItem

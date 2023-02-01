@@ -5,9 +5,4 @@ import { Component, EventEmitter, Output } from '@angular/core';
   templateUrl: './head.component.html',
   styleUrls: ['./head.component.scss'],
 })
-export class HeadComponent {
-  @Output() setSwitchView = new EventEmitter();
-  onClick() {
-    this.setSwitchView.emit();
-  }
-}
+export class HeadComponent {}

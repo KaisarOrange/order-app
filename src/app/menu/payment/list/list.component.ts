@@ -17,11 +17,6 @@ export class ListComponent implements OnInit {
       this.order = res;
     });
   }
-  @Output() handleClick = new EventEmitter();
-  @Output() setSwitchView = new EventEmitter();
-  onClick() {
-    this.setSwitchView.emit('clicked a button');
-  }
 
   addOrder(price: number, id: number, name: string, image: string) {
     // const find = this.order.findIndex((e) => e.id === id);

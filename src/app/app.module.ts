@@ -40,6 +40,7 @@ registerLocaleData(localeId, 'id');
     RouterModule.forRoot([
       { path: 'menu', component: MenuComponent },
       { path: 'menu/:id', component: DetailComponent },
+      { path: 'payment', component: PaymentComponent },
       { path: 'order', component: WelcomeComponent },
       { path: '', redirectTo: '/order', pathMatch: 'full' },
       { path: '**', component: PageNotFoundComponent },
