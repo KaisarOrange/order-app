@@ -9,7 +9,11 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { CardsComponent } from './menu/cards/cards.component';
 import { CheckoutComponent } from './menu/checkout/checkout.component';
 import localeId from '@angular/common/locales/id';
-import { registerLocaleData } from '@angular/common';
+import {
+  HashLocationStrategy,
+  LocationStrategy,
+  registerLocaleData,
+} from '@angular/common';
 import { PaymentComponent } from './menu/payment/payment.component';
 import { ListComponent } from './menu/payment/list/list.component';
 import { InputComponent } from './menu/payment/input/input.component';
@@ -46,7 +50,10 @@ registerLocaleData(localeId, 'id');
       { path: '**', component: PageNotFoundComponent },
     ]),
   ],
-  providers: [{ provide: LOCALE_ID, useValue: 'id-ID' }],
+  providers: [
+    { provide: LOCALE_ID, useValue: 'id-ID' },
+    { provide: LocationStrategy, useClass: HashLocationStrategy },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
