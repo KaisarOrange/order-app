@@ -1,9 +1,15 @@
 import { Component, Input } from '@angular/core';
-import { Subscription } from 'rxjs';
+import {
+  AngularFirestore,
+  AngularFirestoreCollection,
+} from '@angular/fire/compat/firestore';
+import { Observable, Subscription } from 'rxjs';
 import { order } from './order';
 import { OrderService } from './services/order.service';
 import { TestService } from './services/test.service';
-
+export interface Item {
+  name: string;
+}
 @Component({
   selector: 'app-menu',
   templateUrl: './menu.component.html',
@@ -13,6 +19,8 @@ export class MenuComponent {
   menu: boolean = true;
   current: string = 'hello';
   order: Array<any> = [];
+  items!: Observable<Item[]>;
+  private itemsCollection: AngularFirestoreCollection<Item>;
 
   datas: any[] = [];
   subscription!: Subscription;
@@ -24,13 +32,11 @@ export class MenuComponent {
     this.menu = menu;
   }
 
-  constructor(private itemOrder: OrderService, private test: TestService) {
-    this.subscription = this.test.getData().subscribe((res) => {
-      if (res) {
-        this.datas.push(res);
-      } else {
-        this.datas = [];
-      }
-    });
+  constructor(private itemOrder: OrderService, private afs: AngularFirestore) {
+    this.itemsCollection = afs.collection<Item>('items');
+    this.items = this.itemsCollection.valueChanges();
+  }
+  addItem() {
+    this.itemsCollection.add({ name: 'hello' });
   }
 }

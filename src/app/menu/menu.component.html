@@ -1,6 +1,12 @@
 <div *ngIf="menu" class="xl:w-2/5 xl:m-auto ml-9 mr-9 mt-2 h-screen">
-  <h1 class="text-xl font-semibold">Menu</h1>
+  <h1 (click)="addItem()" class="text-xl font-semibold">Menu</h1>
   <h2>Choose your delicious meal</h2>
+  <button (click)="addItem()">hello</button>
+  <ul>
+    <li *ngFor="let item of items | async">
+      {{ item.name }}
+    </li>
+  </ul>
   <div class="flex flex-col">
     <app-cards></app-cards>
     <app-checkout></app-checkout>
