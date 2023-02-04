@@ -5,7 +5,6 @@ import { BehaviorSubject, Observable, Subject } from 'rxjs';
   providedIn: 'root',
 })
 export class OrderService {
-  constructor() {}
   order: Array<any> = [];
   private subject = new BehaviorSubject<Object>([]);
   item: number = 0;
