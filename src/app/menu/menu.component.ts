@@ -21,6 +21,7 @@ export class MenuComponent {
   current: string = 'hello';
   order: Array<any> = [];
   items!: Observable<Item[]>;
+
   private itemsCollection: AngularFirestoreCollection<Item>;
   private deletee: AngularFirestoreDocument<Item>;
 

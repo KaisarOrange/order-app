@@ -1,7 +1,7 @@
 <div *ngIf="menu" class="xl:w-2/5 xl:m-auto ml-9 mr-9 mt-2 h-screen">
   <h1 (click)="addItem()" class="text-xl font-semibold">Menu</h1>
   <h2>Choose your delicious meal</h2>
-  <button (click)="addItem()">hello</button>
+
   <ul>
     <li *ngFor="let item of items | async">
       {{ item.name }}
@@ -16,3 +16,5 @@
 <div class="xl:w-2/5 xl:m-auto mt-5 h-screen" *ngIf="menu === false">
   <app-payment (switchView)="switchView($event)"></app-payment>
 </div>
+
+<!-- <button (click)="addItem()">hello</button> -->
