@@ -1,7 +1,12 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
+import {
+  AngularFirestore,
+  AngularFirestoreCollection,
+} from '@angular/fire/compat/firestore';
 import { Subscription } from 'rxjs';
 import { OrderService } from '../services/order.service';
 import { UserInputService } from '../services/user-input.service';
+import { finalOrder } from './finalOrder';
 import { userInfo } from './input/userInfo';
 
 @Component({
@@ -13,16 +18,22 @@ export class PaymentComponent {
   order: Array<any> = [];
   subscription!: Subscription;
   subscriptionUserInput!: Subscription;
-  finalOrder: any = {
+  finalOrder: finalOrder = {
     name: '',
     number: '',
     address: '',
     order: [],
   };
+
+  private itemsCollection: AngularFirestoreCollection<finalOrder>;
+
   constructor(
     private orderItem: OrderService,
-    private userInput: UserInputService
+    private userInput: UserInputService,
+    private afs: AngularFirestore
   ) {
+    this.itemsCollection = this.afs.collection<finalOrder>('order');
+
     this.subscription = this.orderItem.getSubject().subscribe((res) => {
       this.order = res;
       this.finalOrder.order = res;
@@ -41,6 +52,16 @@ export class PaymentComponent {
   addUserInput(input: any) {}
 
   log() {
-    console.log(this.finalOrder);
+    const isEmpty = Object.values(this.finalOrder).some(
+      (x) => x === undefined || x === '' || x.length === 0
+    );
+    const find = Object.values(this.finalOrder).findIndex(
+      (x) => x === undefined || x === '' || x.length === 0
+    );
+    if (!isEmpty) {
+      this.itemsCollection.add(this.finalOrder);
+    } else {
+      alert('mohon isi semua input :D ' + find);
+    }
   }
 }
