@@ -28,6 +28,7 @@ import { HeadComponent } from './menu/payment/head/head.component';
 import { RingkasanComponent } from './menu/payment/ringkasan/ringkasan.component';
 import { AutosizeModule } from 'ngx-autosize';
 import { DetailComponent } from './menu/detail/detail.component';
+import { FormsModule } from '@angular/forms';
 registerLocaleData(localeId, 'id');
 @NgModule({
   declarations: [
@@ -50,6 +51,7 @@ registerLocaleData(localeId, 'id');
     AutosizeModule,
     AngularFirestoreModule,
     AngularFireStorageModule,
+    FormsModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
     RouterModule.forRoot([
       { path: 'menu', component: MenuComponent },

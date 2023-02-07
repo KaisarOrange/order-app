@@ -52,16 +52,18 @@ export class PaymentComponent {
   addUserInput(input: any) {}
 
   log() {
-    const isEmpty = Object.values(this.finalOrder).some(
-      (x) => x === undefined || x === '' || x.length === 0
-    );
-    const find = Object.values(this.finalOrder).findIndex(
-      (x) => x === undefined || x === '' || x.length === 0
-    );
-    if (!isEmpty) {
-      this.itemsCollection.add(this.finalOrder);
-    } else {
-      alert('mohon isi semua input :D ' + find);
-    }
+    console.log(this.finalOrder);
+
+    // const isEmpty = Object.values(this.finalOrder).some(
+    //   (x) => x === undefined || x === '' || x.length === 0
+    // );
+    // const find = Object.values(this.finalOrder).findIndex(
+    //   (x) => x === undefined || x === '' || x.length === 0
+    // );
+    // if (!isEmpty) {
+    //   this.itemsCollection.add(this.finalOrder);
+    // } else {
+    //   alert('mohon isi semua input :D ' + find);
+    // }
   }
 }

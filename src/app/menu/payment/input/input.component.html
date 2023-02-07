@@ -4,30 +4,36 @@
     <p class="text-[#BCBCBC] text-xs">Nomor Whatsapp (Wa)</p>
     <p class="text-[#BCBCBC] text-xs">Alamat</p>
   </div>
-  <div class="flex flex-col gap-4 lg:w-1/4">
-    <input
-      required
-      autosize
-      type="text"
-      value="{{ name }}"
-      class="focus:outline-none border pl-3 text-xs rounded-3xl shadow-[0_4px_4px_rgba(0,0,0,0.25),0_4px_4px_rgba(0,0,0,0.3)]"
-      #box
-      (keyup)="onKey(box.value, 1)"
-    />
-    <input
-      class="focus:outline-none border text-xs pl-3 rounded-3xl shadow-[0_4px_4px_rgba(0,0,0,0.25),0_4px_4px_rgba(0,0,0,0.3)]"
-      #box2
-      value="{{ number }}"
-      (keyup)="onKey(box2.value, 2)"
-    />
-    <textarea
-      autosize
-      [minRows]="1.1"
-      type="text"
-      value="{{ address }}"
-      class="resize-none focus:outline-none border pl-3 pr-3 text-xs rounded-3xl shadow-[0_4px_4px_rgba(0,0,0,0.25),0_4px_4px_rgba(0,0,0,0.3)]"
-      #box3
-      (keyup)="onKey(box3.value, 3)"
-    ></textarea>
-  </div>
+
+  <form #form="ngForm">
+    <div class="flex flex-col gap-4 lg:w-1/4">
+      <input
+        #box="ngModel"
+        required
+        minlength="5"
+        type="text"
+        name="name"
+        (keyup)="onKey()"
+        [(ngModel)]="userInfo.name"
+        class="focus:outline-none border pl-3 text-xs rounded-3xl shadow-[0_4px_4px_rgba(0,0,0,0.25),0_4px_4px_rgba(0,0,0,0.3)]"
+      />
+      <input
+        required
+        name="number"
+        [(ngModel)]="userInfo.number"
+        (keyup)="onKey()"
+        class="focus:outline-none border text-xs pl-3 rounded-3xl shadow-[0_4px_4px_rgba(0,0,0,0.25),0_4px_4px_rgba(0,0,0,0.3)]"
+      />
+      <textarea
+        required
+        autosize
+        [(ngModel)]="userInfo.address"
+        [minRows]="1.1"
+        type="text"
+        name="address"
+        (keyup)="onKey()"
+        class="resize-none focus:outline-none border pl-3 pr-3 text-xs rounded-3xl shadow-[0_4px_4px_rgba(0,0,0,0.25),0_4px_4px_rgba(0,0,0,0.3)]"
+      ></textarea>
+    </div>
+  </form>
 </div>
