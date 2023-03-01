@@ -23,6 +23,13 @@ export class CardsComponent {
     });
   }
 
+  getNote(id: number, name: string) {
+    const find = this.orderItem.note.findIndex((e) => e.id === id);
+    let hello = this.orderItem.note[find]?.text;
+    let text = prompt('masukan catatan', hello) as string;
+    this.orderItem.setNote(text, id, name);
+  }
+
   pushOrder(price: number, id: number, name: string, image: string) {
     this.orderItem.pushOrder(price, id, name, image);
   }

@@ -29,6 +29,7 @@ import { RingkasanComponent } from './menu/payment/ringkasan/ringkasan.component
 import { AutosizeModule } from 'ngx-autosize';
 import { DetailComponent } from './menu/detail/detail.component';
 import { FormsModule } from '@angular/forms';
+import { ThankComponent } from './thank/thank.component';
 registerLocaleData(localeId, 'id');
 @NgModule({
   declarations: [
@@ -44,6 +45,7 @@ registerLocaleData(localeId, 'id');
     HeadComponent,
     RingkasanComponent,
     DetailComponent,
+    ThankComponent,
   ],
   imports: [
     BrowserModule,

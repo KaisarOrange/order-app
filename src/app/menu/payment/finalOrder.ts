@@ -3,4 +3,5 @@ export interface finalOrder {
   number: string;
   address: string;
   order?: [];
+  note?: [];
 }

@@ -1,4 +1,5 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import { UserInputService } from '../../services/user-input.service';
 import { userInfo } from './userInfo';
 
@@ -8,16 +9,11 @@ import { userInfo } from './userInfo';
   styleUrls: ['./input.component.scss'],
 })
 export class InputComponent implements OnInit {
-  values = 'hai';
   userInfo: userInfo = { name: '', address: '', number: '' };
 
-  name: string = 'Alif';
-  address: string = '';
-  number: string = '';
   constructor(private userInput: UserInputService) {
     this.userInput.getSubject().subscribe((res) => {
       this.userInfo.name = res.name;
-
       this.userInfo.address = res.address;
       this.userInfo.number = res.number;
     });

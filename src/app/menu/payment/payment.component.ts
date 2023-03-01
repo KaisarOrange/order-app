@@ -3,6 +3,7 @@ import {
   AngularFirestore,
   AngularFirestoreCollection,
 } from '@angular/fire/compat/firestore';
+import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { OrderService } from '../services/order.service';
 import { UserInputService } from '../services/user-input.service';
@@ -22,6 +23,7 @@ export class PaymentComponent {
     name: '',
     number: '',
     address: '',
+    note: [],
     order: [],
   };
 
@@ -30,7 +32,8 @@ export class PaymentComponent {
   constructor(
     private orderItem: OrderService,
     private userInput: UserInputService,
-    private afs: AngularFirestore
+    private afs: AngularFirestore,
+    private _router: Router
   ) {
     this.itemsCollection = this.afs.collection<finalOrder>('order');
 
@@ -43,27 +46,38 @@ export class PaymentComponent {
       this.finalOrder.address = res.address;
       this.finalOrder.number = res.number;
     });
+    this.subscription = this.orderItem.getNoteSubject().subscribe((res) => {
+      this.finalOrder.note = res;
+    });
   }
   @Output() switchView = new EventEmitter<boolean>();
   setSwitch() {
     this.switchView.emit(true);
   }
 
-  addUserInput(input: any) {}
+  confirm() {
+    let result = confirm('Selesaikan pesanan?');
+    if (result) {
+      this.log();
+    } else {
+      return;
+    }
+  }
 
   log() {
     console.log(this.finalOrder);
 
-    // const isEmpty = Object.values(this.finalOrder).some(
-    //   (x) => x === undefined || x === '' || x.length === 0
-    // );
-    // const find = Object.values(this.finalOrder).findIndex(
-    //   (x) => x === undefined || x === '' || x.length === 0
-    // );
-    // if (!isEmpty) {
-    //   this.itemsCollection.add(this.finalOrder);
-    // } else {
-    //   alert('mohon isi semua input :D ' + find);
-    // }
+    const isEmpty = Object.values(this.finalOrder).some(
+      (x) => x === undefined || x === '' || x.length === 0
+    );
+    const find = Object.values(this.finalOrder).findIndex(
+      (x) => x === undefined || x === '' || x.length === 0
+    );
+    if (!isEmpty) {
+      this.itemsCollection.add(this.finalOrder);
+      this._router.navigate(['order']);
+    } else {
+      alert('mohon isi semua input :D ' + find);
+    }
   }
 }
