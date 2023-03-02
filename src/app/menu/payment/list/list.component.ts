@@ -36,6 +36,10 @@ export class ListComponent implements OnInit {
     console.log(this.menu);
   }
 
+  getNote(id: number, name: string) {
+    this.orderItem.setNote(id, name);
+  }
+
   ngOnInit(): void {
     this.order = this.order.filter((e) => e.amount > 0);
   }

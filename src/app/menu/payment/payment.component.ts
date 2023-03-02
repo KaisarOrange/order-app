@@ -23,8 +23,8 @@ export class PaymentComponent {
     name: '',
     number: '',
     address: '',
-    note: [],
     order: [],
+    note: [],
   };
 
   private itemsCollection: AngularFirestoreCollection<finalOrder>;
@@ -65,7 +65,9 @@ export class PaymentComponent {
   }
 
   log() {
-    console.log(this.finalOrder);
+    if (this.finalOrder.note!?.length < 1 || this.order.length < 1) {
+      this.orderItem.setNote(5, 'Tidak ada catatan');
+    }
 
     const isEmpty = Object.values(this.finalOrder).some(
       (x) => x === undefined || x === '' || x.length === 0
@@ -79,5 +81,6 @@ export class PaymentComponent {
     } else {
       alert('mohon isi semua input :D ' + find);
     }
+    console.log(this.finalOrder);
   }
 }

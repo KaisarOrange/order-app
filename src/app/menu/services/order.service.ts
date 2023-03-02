@@ -24,15 +24,28 @@ export class OrderService {
     return this.subject.asObservable();
   }
 
-  setNote(text: string, id: number, name: string) {
-    const check = this.note.some((e) => e.id === id);
+  setNote(id: number, name: string) {
     const find = this.note.findIndex((e) => e.id === id);
+    const check = this.note.some((e) => e.id === id);
+    let hello = this.note[find]?.text;
 
-    if (check === false) {
-      this.note.push({ text: text, id: id, name: name });
+    if (id < 5) {
+      let textNote = prompt('masukan catatan', hello) as string;
+      this.note = this.note.filter((e) => e.id != 5);
+      if (check === false && textNote != null) {
+        this.note.push({ text: textNote, id: id, name: name });
+      } else {
+        this.note[find].text = textNote;
+      }
     } else {
-      this.note[find].text = text;
+      if (check === false) {
+        this.note = this.note.filter((e) => e.id === 5);
+        this.note.push({ text: '', id: id, name: name });
+      } else {
+        this.note[find].text = '';
+      }
     }
+
     this.sendNote(this.note);
   }
 
@@ -76,7 +89,7 @@ export class OrderService {
   };
 }
 
-interface noteType {
+export interface noteType {
   name: string;
   id: number;
   text: string;
