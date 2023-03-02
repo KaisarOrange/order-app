@@ -60,6 +60,7 @@ registerLocaleData(localeId, 'id');
       { path: 'menu/:id', component: DetailComponent },
       { path: 'payment', component: PaymentComponent },
       { path: 'order', component: WelcomeComponent },
+      { path: 'thank', component: ThankComponent },
       { path: '', redirectTo: '/order', pathMatch: 'full' },
       { path: '**', component: PageNotFoundComponent },
     ]),

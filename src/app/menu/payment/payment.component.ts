@@ -72,14 +72,22 @@ export class PaymentComponent {
     const isEmpty = Object.values(this.finalOrder).some(
       (x) => x === undefined || x === '' || x.length === 0
     );
-    const find = Object.values(this.finalOrder).findIndex(
+    const find = Object.values(this.finalOrder).map(
       (x) => x === undefined || x === '' || x.length === 0
     );
+
+    const emptyKey = Object.keys(this.finalOrder).filter(
+      (key: any, index: number) =>
+        Object.values(this.finalOrder)[index] === '' ||
+        Object.values(this.finalOrder)[index] === undefined ||
+        Object.values(this.finalOrder)[index].length === 0
+    );
+
     if (!isEmpty) {
       this.itemsCollection.add(this.finalOrder);
-      this._router.navigate(['order']);
+      this._router.navigate(['thank']);
     } else {
-      alert('mohon isi semua input :D ' + find);
+      alert('mohon isi input berikut: ' + emptyKey.join(', '));
     }
     console.log(this.finalOrder);
   }
