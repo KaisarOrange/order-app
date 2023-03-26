@@ -21,6 +21,7 @@ export class MenuComponent {
   current: string = 'hello';
   order: Array<any> = [];
   items!: Observable<Item[]>;
+  orderExist: boolean = false;
 
   private itemsCollection: AngularFirestoreCollection<Item>;
   private deletee: AngularFirestoreDocument<Item>;
@@ -39,9 +40,14 @@ export class MenuComponent {
     this.itemsCollection = afs.collection<Item>('items');
     this.items = this.itemsCollection.valueChanges();
     this.deletee = afs.doc<Item>('items/n9AqpviQGInJPPmaJ1us');
+    this.subscription = this.itemOrder.getSubject().subscribe((res) => {
+      this.orderExist = this.itemOrder.isOrderEmpty;
+    });
   }
+
   addItem() {
     //  this.itemsCollection.add({ name: 'hello' });
-    this.deletee.delete();
+
+    console.log(this.orderExist, this.itemOrder.isOrderEmpty);
   }
 }

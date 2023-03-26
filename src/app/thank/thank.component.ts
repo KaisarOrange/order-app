@@ -10,6 +10,6 @@ export class ThankComponent {
   constructor(private _router: Router) {
     setTimeout(() => {
       this._router.navigate(['order']);
-    }, 3500);
+    }, 4000);
   }
 }

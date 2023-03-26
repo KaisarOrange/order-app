@@ -9,7 +9,7 @@
   </ul>
   <div class="flex flex-col">
     <app-cards></app-cards>
-    <app-checkout></app-checkout>
+    <app-checkout *ngIf="orderExist"></app-checkout>
   </div>
 </div>
 
@@ -17,4 +17,4 @@
   <app-payment (switchView)="switchView($event)"></app-payment>
 </div>
 
-<!-- <button (click)="addItem()">hello</button> -->
+<button (click)="addItem()">hello</button>

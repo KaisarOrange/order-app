@@ -7,6 +7,7 @@ import { BehaviorSubject, Observable, Subject } from 'rxjs';
 export class OrderService {
   order: Array<any> = [];
   note: Array<noteType> = [];
+  isOrderEmpty: boolean = false;
   private subject = new BehaviorSubject<Object>([]);
   private noteSubject = new BehaviorSubject<Object>([]);
   item: number = 0;
@@ -70,6 +71,12 @@ export class OrderService {
     } else {
       this.order[find].amount = this.order[find].amount + 1;
     }
+    if (this.order.length > 0) {
+      this.isOrderEmpty = true;
+    } else if (this.order.length === 0) {
+      this.isOrderEmpty = false;
+    }
+
     this.sendData(this.order);
   }
 
@@ -79,7 +86,11 @@ export class OrderService {
     this.order[find].amount = this.order[find].amount - 1;
 
     this.order = this.order.filter((e) => e.amount > 0);
-
+    if (this.order.length > 0) {
+      this.isOrderEmpty = true;
+    } else if (this.order.length === 0) {
+      this.isOrderEmpty = false;
+    }
     this.sendData(this.order);
   }
 
