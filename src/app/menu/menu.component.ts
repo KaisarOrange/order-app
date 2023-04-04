@@ -5,7 +5,7 @@ import {
   AngularFirestoreDocument,
 } from '@angular/fire/compat/firestore';
 import { Observable, Subscription } from 'rxjs';
-import { order } from './order';
+
 import { OrderService } from './services/order.service';
 import { TestService } from './services/test.service';
 export interface Item {
@@ -22,10 +22,24 @@ export class MenuComponent {
   order: Array<any> = [];
   items!: Observable<Item[]>;
   orderExist: boolean = false;
-
+  testpa: string[] = [];
   private itemsCollection: AngularFirestoreCollection<Item>;
   private deletee: AngularFirestoreDocument<Item>;
-
+  constructor(
+    private itemOrder: OrderService,
+    private afs: AngularFirestore,
+    private testp: TestService
+  ) {
+    this.testp.fetchData().subscribe((res) => {
+      this.testpa = res;
+    });
+    this.itemsCollection = afs.collection<Item>('items');
+    this.items = this.itemsCollection.valueChanges();
+    this.deletee = afs.doc<Item>('items/n9AqpviQGInJPPmaJ1us');
+    this.subscription = this.itemOrder.getSubject().subscribe((res) => {
+      this.orderExist = this.itemOrder.isOrderEmpty;
+    });
+  }
   datas: any[] = [];
   subscription!: Subscription;
 
@@ -34,15 +48,6 @@ export class MenuComponent {
   }
   switchView(menu: boolean) {
     this.menu = menu;
-  }
-
-  constructor(private itemOrder: OrderService, private afs: AngularFirestore) {
-    this.itemsCollection = afs.collection<Item>('items');
-    this.items = this.itemsCollection.valueChanges();
-    this.deletee = afs.doc<Item>('items/n9AqpviQGInJPPmaJ1us');
-    this.subscription = this.itemOrder.getSubject().subscribe((res) => {
-      this.orderExist = this.itemOrder.isOrderEmpty;
-    });
   }
 
   addItem() {

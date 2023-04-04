@@ -23,8 +23,8 @@ export class CardsComponent {
     });
   }
 
-  getNote(id: number, name: string) {
-    this.orderItem.setNote(id, name);
+  getNote(id: number) {
+    this.orderItem.setNote(id);
   }
 
   pushOrder(price: number, id: number, name: string, image: string) {

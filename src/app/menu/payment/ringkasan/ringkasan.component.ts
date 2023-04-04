@@ -9,7 +9,7 @@ export class RingkasanComponent {
   @Input() order: Array<any> = [];
 
   totalAddition = () => {
-    const total = this.order.reduce((a, b) => a + b.price * b.amount, 0);
+    const total = this.order.reduce((a, b) => a + b.price * b.quantity, 0);
     return total;
   };
 }

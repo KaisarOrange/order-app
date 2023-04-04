@@ -1,6 +1,9 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { OrderService } from '../../services/order.service';
+import { orderType } from '../../order';
+import { ItemService } from '../../services/item.service';
+import { item } from '../../item';
 
 @Component({
   selector: 'app-list',
@@ -8,19 +11,21 @@ import { OrderService } from '../../services/order.service';
   styleUrls: ['./list.component.scss'],
 })
 export class ListComponent implements OnInit {
-  order: Array<any> = [];
   @Input() menu: boolean = false;
+  order: Array<any> = [];
+  items: item[] = [];
   subscription!: Subscription;
 
-  constructor(private orderItem: OrderService) {
+  constructor(
+    private orderItem: OrderService,
+    private itemService: ItemService
+  ) {
     this.subscription = this.orderItem.getSubject().subscribe((res) => {
       this.order = res;
     });
   }
 
   addOrder(price: number, id: number, name: string, image: string) {
-    // const find = this.order.findIndex((e) => e.id === id);
-    // this.order[find].amount = this.order[find].amount + 1;
     this.orderItem.pushOrder(price, id, name, image);
   }
   reduceOrder(id: number) {
@@ -35,12 +40,15 @@ export class ListComponent implements OnInit {
     this.menu = true;
     console.log(this.menu);
   }
+  test() {
+    console.log(this.order);
+  }
 
-  getNote(id: number, name: string) {
-    this.orderItem.setNote(id, name);
+  getNote(id: number) {
+    this.orderItem.setNote(id);
   }
 
   ngOnInit(): void {
-    this.order = this.order.filter((e) => e.amount > 0);
+    this.order = this.order.filter((e) => e.quantity > 0);
   }
 }

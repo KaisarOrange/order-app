@@ -42,6 +42,8 @@ export class DetailComponent implements OnInit {
     this.id$.subscribe((e) => {
       this.id = Number(e);
     });
-    this.items = this.itemService.getItems().filter((e) => e.id === this.id);
+    this.items = this.itemService
+      .getItems()
+      .filter((e: any) => e.id === this.id);
   }
 }

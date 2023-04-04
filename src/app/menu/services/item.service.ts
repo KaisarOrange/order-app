@@ -1,10 +1,14 @@
 import { Injectable } from '@angular/core';
 import { item } from '../item';
+import { OrderService } from './order.service';
+import { Subscription } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ItemService {
+  order: any;
+  subscription!: Subscription;
   items: item[] = [
     {
       id: 1,
@@ -42,8 +46,7 @@ export class ItemService {
       image: 'assets/img/cook.jpg',
     },
   ];
-
-  constructor() {}
+  itema: item[] = [];
 
   getItems() {
     return this.items;

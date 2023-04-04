@@ -9,7 +9,7 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { CardsComponent } from './menu/cards/cards.component';
 import { CheckoutComponent } from './menu/checkout/checkout.component';
 import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
-
+import { HttpClientModule } from '@angular/common/http';
 import { SETTINGS as AUTH_SETTINGS } from '@angular/fire/compat/auth';
 import { AngularFireStorageModule } from '@angular/fire/compat/storage';
 import { environment } from '../environments/environment';
@@ -54,6 +54,7 @@ registerLocaleData(localeId, 'id');
     AngularFirestoreModule,
     AngularFireStorageModule,
     FormsModule,
+    HttpClientModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
     RouterModule.forRoot([
       { path: 'menu', component: MenuComponent },

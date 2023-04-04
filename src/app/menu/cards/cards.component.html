@@ -16,18 +16,18 @@
       </div>
       <div class="mt-10 mb-0">
         <button
-          *ngIf="order[renderAmount(item.id)]?.amount < 1"
+          *ngIf="order[renderAmount(item.id)]?.quantity < 1"
           class="border-[#28A748] border-2 h-5 text-xs text-[#28A748] px-7 rounded-lg"
           (click)="pushOrder(item.price, item.id, item.name, item.image)"
         >
           Tambah
         </button>
         <div
-          *ngIf="order[renderAmount(item.id)]?.amount > 0"
+          *ngIf="order[renderAmount(item.id)]?.quantity > 0"
           class="flex justify-between items-center gap-1"
         >
           <button
-            (click)="getNote(item.id, item.name)"
+            (click)="getNote(item.id)"
             class="text-[10px] border-black border-[1px] rounded-full px-2 shadow-lg"
           >
             Catatan
@@ -37,7 +37,7 @@
               <img src="assets/img/min.svg" />
             </button>
             <div class="text-xs w-2 flex justify-center">
-              {{ order[renderAmount(item.id)]?.amount }}
+              {{ order[renderAmount(item.id)]?.quantity }}
             </div>
             <button
               (click)="pushOrder(item.price, item.id, item.name, item.image)"
