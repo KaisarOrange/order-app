@@ -23,7 +23,7 @@ export class PaymentComponent {
   finalOrder: finalOrder = {
     name: '',
     number: '',
-    address: '',
+    adress: '',
     order: [],
   };
 
@@ -48,7 +48,7 @@ export class PaymentComponent {
     });
     this.subscription = this.userInput.getSubject().subscribe((res) => {
       this.finalOrder.name = res.name;
-      this.finalOrder.address = res.address;
+      this.finalOrder.adress = res.address;
       this.finalOrder.number = res.number;
     });
   }
@@ -80,6 +80,9 @@ export class PaymentComponent {
 
     if (!isEmpty) {
       //  this.itemsCollection.add(this.finalOrder);
+      this.orderItem
+        .sendOrder(this.finalOrder)
+        .subscribe((res) => console.log(res));
       this._router.navigate(['thank']);
     } else {
       alert('mohon isi input berikut: ' + emptyKey.join(', '));

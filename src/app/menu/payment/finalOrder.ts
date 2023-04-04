@@ -4,7 +4,7 @@ import { noteType } from '../services/order.service';
 export interface finalOrder {
   name: string;
   number: string;
-  address: string;
+  adress: string;
   order: orderFinalType[];
 }
 type orderFinalType = {
