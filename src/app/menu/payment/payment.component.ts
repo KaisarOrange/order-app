@@ -7,9 +7,9 @@ import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { OrderService } from '../services/order.service';
 import { UserInputService } from '../services/user-input.service';
-import { finalOrder, orderFinalType } from './finalOrder';
-import { userInfo } from './input/userInfo';
-import { orderType } from '../order';
+import { finalOrder, orderFinalType } from '../../Interfaces/finalOrder';
+import { userInfo } from '../../Interfaces/userInfo';
+import { orderType } from '../../Interfaces/order';
 
 @Component({
   selector: 'app-payment',
@@ -79,7 +79,6 @@ export class PaymentComponent {
     );
 
     if (!isEmpty) {
-      //  this.itemsCollection.add(this.finalOrder);
       this.orderItem
         .sendOrder(this.finalOrder)
         .subscribe((res) => console.log(res));

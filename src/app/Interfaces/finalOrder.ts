@@ -1,5 +1,5 @@
-import { orderType } from '../order';
-import { noteType } from '../services/order.service';
+import { orderType } from './order';
+import { noteType } from '../menu/services/order.service';
 
 export interface finalOrder {
   name: string;

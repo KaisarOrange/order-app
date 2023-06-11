@@ -9,22 +9,23 @@ import {
 } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { OrderService } from '../services/order.service';
+import { orderType } from 'src/app/Interfaces/order';
 
 @Component({
   selector: 'app-checkout',
   templateUrl: './checkout.component.html',
   styleUrls: ['./checkout.component.scss'],
 })
-export class CheckoutComponent implements OnChanges {
+export class CheckoutComponent {
+  order: Array<orderType> = [];
+  cont = 0;
   subscription!: Subscription;
+
   constructor(private orderItem: OrderService) {
     this.subscription = orderItem
       .getSubject()
       .subscribe((e) => (this.order = e));
   }
-
-  order: Array<any> = [];
-  cont = 0;
 
   amountTotal = () => {
     const total = this.order.reduce((a, b) => a + b.quantity, 0);
@@ -34,6 +35,4 @@ export class CheckoutComponent implements OnChanges {
     const total = this.order.reduce((a, b) => a + b.price * b.quantity, 0);
     return total;
   };
-
-  ngOnChanges(change: SimpleChanges) {}
 }

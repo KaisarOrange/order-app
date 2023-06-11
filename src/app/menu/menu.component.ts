@@ -7,7 +7,6 @@ import {
 import { Observable, Subscription } from 'rxjs';
 
 import { OrderService } from './services/order.service';
-import { TestService } from './services/test.service';
 export interface Item {
   name: string;
 }
@@ -25,14 +24,7 @@ export class MenuComponent {
   testpa: string[] = [];
   private itemsCollection: AngularFirestoreCollection<Item>;
   private deletee: AngularFirestoreDocument<Item>;
-  constructor(
-    private itemOrder: OrderService,
-    private afs: AngularFirestore,
-    private testp: TestService
-  ) {
-    this.testp.fetchData().subscribe((res) => {
-      this.testpa = res;
-    });
+  constructor(private itemOrder: OrderService, private afs: AngularFirestore) {
     this.itemsCollection = afs.collection<Item>('items');
     this.items = this.itemsCollection.valueChanges();
     this.deletee = afs.doc<Item>('items/n9AqpviQGInJPPmaJ1us');

@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { map, Subscription } from 'rxjs';
 import { ItemService } from '../services/item.service';
 import { OrderService } from '../services/order.service';
+import { orderType } from 'src/app/Interfaces/order';
 
 @Component({
   selector: 'app-detail',
@@ -13,7 +14,7 @@ export class DetailComponent implements OnInit {
   id$ = this.router.paramMap.pipe(map((params) => params.get('id')));
   id: number = 0;
   items: Array<any> = [];
-  order: Array<any> = [];
+  order: orderType[] = [];
   subscription!: Subscription;
 
   constructor(
@@ -36,8 +37,13 @@ export class DetailComponent implements OnInit {
 
   renderAmount = (id: number) => {
     const find = this.orderItem.renderAmount(id);
-    return find;
+    if (this.order[find]) {
+      return this.order[find]?.quantity;
+    } else {
+      return 0;
+    }
   };
+
   ngOnInit(): void {
     this.id$.subscribe((e) => {
       this.id = Number(e);

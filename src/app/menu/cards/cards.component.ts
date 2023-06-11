@@ -2,7 +2,9 @@ import { Component, OnInit, OnChanges, SimpleChanges } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { ItemService } from '../services/item.service';
 import { OrderService } from '../services/order.service';
-import { TestService } from '../services/test.service';
+import { orderType } from 'src/app/Interfaces/order';
+import { item } from 'src/app/Interfaces/item';
+import { orderFinalType } from 'src/app/Interfaces/finalOrder';
 
 @Component({
   selector: 'app-cards',
@@ -10,9 +12,9 @@ import { TestService } from '../services/test.service';
   styleUrls: ['./cards.component.scss'],
 })
 export class CardsComponent {
-  items = this.itemService.getItems();
+  items: item[] = [];
 
-  order: Array<any> = [];
+  order: orderType[] = [];
   subscription!: Subscription;
   constructor(
     private itemService: ItemService,
@@ -21,6 +23,7 @@ export class CardsComponent {
     this.subscription = orderItem.getSubject().subscribe((res) => {
       this.order = res;
     });
+    this.items = this.itemService.getItems();
   }
 
   getNote(id: number) {
@@ -31,12 +34,16 @@ export class CardsComponent {
     this.orderItem.pushOrder(price, id, name, image);
   }
 
+  renderAmount = (id: number) => {
+    const find = this.orderItem.renderAmount(id);
+    if (this.order[find]) {
+      return this.order[find]?.quantity;
+    } else {
+      return 0;
+    }
+  };
+
   reduceOrder(id: number) {
     this.orderItem.reduceOrder(id);
   }
-
-  renderAmount = (id: number) => {
-    const find = this.orderItem.renderAmount(id);
-    return find;
-  };
 }

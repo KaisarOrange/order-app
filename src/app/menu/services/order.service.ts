@@ -1,10 +1,10 @@
 import { Injectable, OnInit } from '@angular/core';
 import { BehaviorSubject, Observable, Subject, catchError } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
-import { finalOrder } from '../payment/finalOrder';
-import { orderType } from '../order';
+import { finalOrder } from '../../Interfaces/finalOrder';
+import { orderType } from '../../Interfaces/order';
 import { ItemService } from './item.service';
-import { item } from '../item';
+import { item } from '../../Interfaces/item';
 @Injectable({
   providedIn: 'root',
 })
@@ -80,12 +80,14 @@ export class OrderService {
 
   renderAmount = (id: number) => {
     const find = this.order.findIndex((e) => e.product_id === id);
-
     return find;
   };
 
   sendOrder(body: finalOrder): Observable<finalOrder> {
-    return this.http.post<finalOrder>('/order/pesan', body);
+    return this.http.post<finalOrder>(
+      'https://pastaboys-backend-production.up.railway.app/order/pesan',
+      body
+    );
   }
 }
 
@@ -94,23 +96,3 @@ export interface noteType {
   id: number;
   text: string;
 }
-
-// const check = this.note.some((e) => e.id === id);
-// let hello = this.note[find]?.text;
-
-// if (id < 5) {
-//   let textNote = prompt('masukan catatan', hello) as string;
-//   this.note = this.note.filter((e) => e.id != 5);
-//   if (check === false && textNote != null) {
-//     this.note.push({ text: textNote, id: id, name: name });
-//   } else {
-//     this.note[find].text = textNote;
-//   }
-// } else {
-//   if (check === false) {
-//     this.note = this.note.filter((e) => e.id === 5);
-//     this.note.push({ text: '', id: id, name: name });
-//   } else {
-//     this.note[find].text = '';
-//   }
-// }
