@@ -28,6 +28,15 @@ export class ItemService {
 
       image: 'assets/img/chicken.png',
     },
+    {
+      id: 5,
+      name: 'Fettuccine Mushroom',
+      price: 25000,
+      resep:
+        'Fettuccine Mushroom dengan saus creamy khas Pastaboys dengan pasta yang alami homemade.',
+
+      image: 'assets/img/mushroom.jpg',
+    },
   ];
   itema: item[] = [];
 
