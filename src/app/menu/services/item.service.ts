@@ -28,23 +28,6 @@ export class ItemService {
 
       image: 'assets/img/chicken.png',
     },
-    {
-      id: 3,
-      name: 'Yoghurt',
-      price: 8000,
-      resep:
-        'Yogurt yang dibuat dari susu segar dan plain yogurt ini memiliki rasa creamy manis yang pasti anda sukai.',
-
-      image: 'assets/img/yoghurt.jpg',
-    },
-    {
-      id: 4,
-      name: 'Cookies',
-      price: 10000,
-      resep: 'Cookies coklat kesukaan kamu.',
-
-      image: 'assets/img/cook.jpg',
-    },
   ];
   itema: item[] = [];
 

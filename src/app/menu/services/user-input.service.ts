@@ -7,7 +7,6 @@ import { userInfo } from '../../Interfaces/userInfo';
 })
 export class UserInputService {
   userInfo: userInfo = { name: '', address: '', number: '' };
-
   onKey(event: any) {
     this.userInfo = event;
     this.sendData(this.userInfo);
