@@ -22,7 +22,7 @@ export class ItemService {
     {
       id: 2,
       name: 'Chicken Mushroom',
-      price: 20000,
+      price: 25000,
       resep:
         'Chicken Mushroom dengan saus creamy dengan campuran jamur,susu,pake butter dan ayam filet yang sudah diolah ini memiliki rasa gurih yang pasti anda sukai.',
 
