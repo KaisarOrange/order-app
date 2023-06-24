@@ -1,4 +1,4 @@
-<div class="grid mt-10 gap-4 gap-y-10 grid-cols-2 grid-rows-2">
+<div class="grid mt-5 gap-4 gap-y-5 grid-cols-2 grid-rows-2">
   <div
     class="border-[#C5C5C5] border-[1px] rounded-2xl"
     *ngFor="let item of items; index as i"
@@ -14,7 +14,7 @@
           {{ item.price | currency : "IDR" : "symbol" : "3.0" }}
         </p>
       </div>
-      <div class="mt-10 mb-0">
+      <div class="mt-5 mb-0">
         <button
           *ngIf="renderAmount(item.id) < 1"
           class="border-[#28A748] border-2 h-5 text-xs text-[#28A748] px-7 rounded-lg"
