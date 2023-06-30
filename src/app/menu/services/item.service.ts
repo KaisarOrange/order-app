@@ -37,30 +37,30 @@ export class ItemService {
 
       image: 'assets/img/mushroom.jpg',
     },
-    {
-      id: 6,
-      name: 'Bundle Carbonara',
-      price: 27000,
-      resep:
-        'Fettuccine Mushroom dengan saus creamy khas Pastaboys dengan pasta yang alami homemade.',
-      image: 'assets/img/carbo.png',
-    },
-    {
-      id: 7,
-      name: 'Bundle Chicken',
-      price: 27000,
-      resep:
-        'Fettuccine Mushroom dengan saus creamy khas Pastaboys dengan pasta yang alami homemade.',
-      image: 'assets/img/chicken.png',
-    },
-    {
-      id: 8,
-      name: 'Bundle Fettucine Mushroom',
-      price: 27000,
-      resep:
-        'Fettuccine Mushroom dengan saus creamy khas Pastaboys dengan pasta yang alami homemade.',
-      image: 'assets/img/mushroom.jpg',
-    },
+    // {
+    //   id: 6,
+    //   name: 'Bundle Carbonara',
+    //   price: 27000,
+    //   resep:
+    //     'Fettuccine Mushroom dengan saus creamy khas Pastaboys dengan pasta yang alami homemade.',
+    //   image: 'assets/img/carbo.png',
+    // },
+    // {
+    //   id: 7,
+    //   name: 'Bundle Chicken',
+    //   price: 27000,
+    //   resep:
+    //     'Fettuccine Mushroom dengan saus creamy khas Pastaboys dengan pasta yang alami homemade.',
+    //   image: 'assets/img/chicken.png',
+    // },
+    // {
+    //   id: 8,
+    //   name: 'Bundle Fettucine Mushroom',
+    //   price: 27000,
+    //   resep:
+    //     'Fettuccine Mushroom dengan saus creamy khas Pastaboys dengan pasta yang alami homemade.',
+    //   image: 'assets/img/mushroom.jpg',
+    // },
   ];
   itema: item[] = [];
 

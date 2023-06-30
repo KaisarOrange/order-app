@@ -9,13 +9,13 @@ import { userInfo } from '../../../Interfaces/userInfo';
   styleUrls: ['./input.component.scss'],
 })
 export class InputComponent {
-  userInfo: userInfo = { name: '', address: '', number: '' };
-
+  userInfo: userInfo = { name: '', address: '', number: '', time: '' };
   constructor(private userInput: UserInputService) {
     this.userInput.getSubject().subscribe((res) => {
       this.userInfo.name = res.name;
       this.userInfo.address = res.address;
       this.userInfo.number = res.number;
+      this.userInfo.time = res.time;
     });
   }
 

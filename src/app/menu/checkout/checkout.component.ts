@@ -1,12 +1,4 @@
-import {
-  Component,
-  EventEmitter,
-  Output,
-  Input,
-  OnChanges,
-  SimpleChange,
-  SimpleChanges,
-} from '@angular/core';
+import { Component } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { OrderService } from '../services/order.service';
 import { orderType } from 'src/app/Interfaces/order';

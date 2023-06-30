@@ -5,6 +5,7 @@ export interface finalOrder {
   name: string;
   number: string;
   adress: string;
+  time: string;
   order: orderFinalType[];
 }
 type orderFinalType = {

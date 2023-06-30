@@ -1,10 +1,9 @@
-import { Component, OnInit, OnChanges, SimpleChanges } from '@angular/core';
+import { Component } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { ItemService } from '../services/item.service';
 import { OrderService } from '../services/order.service';
 import { orderType } from 'src/app/Interfaces/order';
 import { item } from 'src/app/Interfaces/item';
-import { orderFinalType } from 'src/app/Interfaces/finalOrder';
 
 @Component({
   selector: 'app-cards',

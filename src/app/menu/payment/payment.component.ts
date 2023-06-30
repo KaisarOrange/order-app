@@ -1,8 +1,4 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import {
-  AngularFirestore,
-  AngularFirestoreCollection,
-} from '@angular/fire/compat/firestore';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { OrderService } from '../services/order.service';
@@ -24,6 +20,7 @@ export class PaymentComponent {
     name: '',
     number: '',
     adress: '',
+    time: '',
     order: [],
   };
 
@@ -50,6 +47,7 @@ export class PaymentComponent {
       this.finalOrder.name = res.name;
       this.finalOrder.adress = res.address;
       this.finalOrder.number = res.number;
+      this.finalOrder.time = res.time;
     });
   }
   @Output() switchView = new EventEmitter<boolean>();

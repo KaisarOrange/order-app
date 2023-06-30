@@ -3,6 +3,7 @@
     <p class="text-[#BCBCBC] text-xs">Nama</p>
     <p class="text-[#BCBCBC] text-xs">Nomor Whatsapp (Wa)</p>
     <p class="text-[#BCBCBC] text-xs">Alamat</p>
+    <p class="text-[#BCBCBC] text-xs">Waktu diantar (13:00 s/d 19:00)</p>
   </div>
   <form #form="ngForm">
     <div class="flex flex-col gap-4">
@@ -30,10 +31,21 @@
         [(ngModel)]="userInfo.address"
         [minRows]="1.1"
         type="text"
+        placeholder="Kec, kel, detail"
         name="address"
         (keyup)="onKey()"
         class="resize-none focus:outline-none border pl-3 pr-3 text-xs rounded-3xl shadow-[0_4px_4px_rgba(0,0,0,0.25),0_4px_4px_rgba(0,0,0,0.3)]"
       ></textarea>
+      <input
+        required
+        name="time"
+        type="text"
+        [(ngModel)]="userInfo.time"
+        placeholder="13:00"
+        onfocus="(this.type='time')"
+        (keyup)="onKey()"
+        class="focus:outline-none border text-xs pl-3 rounded-3xl shadow-[0_4px_4px_rgba(0,0,0,0.25),0_4px_4px_rgba(0,0,0,0.3)]"
+      />
     </div>
   </form>
 </div>

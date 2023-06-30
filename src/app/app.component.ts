@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { Title } from '@angular/platform-browser';
-import { AngularFirestore } from '@angular/fire/compat/firestore';
 
 @Component({
   selector: 'app-root',
@@ -8,7 +7,7 @@ import { AngularFirestore } from '@angular/fire/compat/firestore';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  constructor(firestore: AngularFirestore, title: Title) {
+  constructor(title: Title) {
     title.setTitle('Pastaboys');
   }
 }
