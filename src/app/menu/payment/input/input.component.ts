@@ -9,6 +9,7 @@ import { userInfo } from '../../../Interfaces/userInfo';
   styleUrls: ['./input.component.scss'],
 })
 export class InputComponent {
+  hello: any;
   userInfo: userInfo = { name: '', address: '', number: '', time: '' };
   constructor(private userInput: UserInputService) {
     this.userInput.getSubject().subscribe((res) => {

@@ -60,7 +60,6 @@ export class OrderService {
     } else if (this.order.length === 0) {
       this.isOrderEmpty = false;
     }
-    console.log(this.order);
     this.sendData(this.order);
   }
 
