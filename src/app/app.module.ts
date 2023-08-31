@@ -30,6 +30,7 @@ import { AutosizeModule } from 'ngx-autosize';
 import { DetailComponent } from './menu/detail/detail.component';
 import { FormsModule } from '@angular/forms';
 import { ThankComponent } from './thank/thank.component';
+import { BrbComponent } from './brb/brb/brb.component';
 registerLocaleData(localeId, 'id');
 @NgModule({
   declarations: [
@@ -46,6 +47,7 @@ registerLocaleData(localeId, 'id');
     RingkasanComponent,
     DetailComponent,
     ThankComponent,
+    BrbComponent,
   ],
   imports: [
     BrowserModule,
@@ -58,11 +60,12 @@ registerLocaleData(localeId, 'id');
     AngularFireModule.initializeApp(environment.firebaseConfig),
     RouterModule.forRoot([
       { path: 'menu', component: MenuComponent },
+      { path: 'brb', component: BrbComponent },
       { path: 'menu/:id', component: DetailComponent },
       { path: 'payment', component: PaymentComponent },
       { path: 'order', component: WelcomeComponent },
       { path: 'thank', component: ThankComponent },
-      { path: '', redirectTo: '/order', pathMatch: 'full' },
+      { path: '', redirectTo: '/brb', pathMatch: 'full' },
       { path: '**', component: PageNotFoundComponent },
     ]),
   ],
